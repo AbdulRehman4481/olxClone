@@ -1,0 +1,72 @@
+#topBarLink {
+    text-decoration: none;
+    color: black;
+}
+
+#topBarLink:hover {
+    color: blue;
+}
+
+#searchbar {
+    padding: 5px;
+    width: 450px;
+    border: 2px solid green;
+    border-radius: 3px;
+}
+
+#searchbtn {
+    padding: 5px;
+    border: 2px solid green;
+    border-radius: 3px;
+    background-color: green;
+    color: white;
+}
+
+#selBtn {
+    background-image: url("../assets/image/logo/sellborder.png");
+    background-size: 100px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    padding-top: 7px;
+}
+
+#dropdownDiv {
+    padding-left: 30px;
+
+    h6 {
+        padding-top: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: small;
+
+    }
+
+    a:hover {
+        color: #00A49F;
+    }
+}
+
+#navbarDiv {
+    span:hover {
+        cursor: pointer;
+    }
+}
+
+#navbarDiv2 {
+    a {
+        text-decoration: none;
+        color: black;
+        padding-left: 20px;
+        font-size: small;
+    
+    }
+    a:hover{
+        color: #00A49F;
+    }
+
+}
