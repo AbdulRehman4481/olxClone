@@ -6,7 +6,7 @@ import logo from 'assets/image/logo/OLX1.png'
 
 export default function TopBar() {
     return (
-        <div className="container-fluid ">
+        <div className="container-fluid bg-light ">
             <div className="row px-5">
                 <div className="col">
                     <div style={{ margin: "30px 0 0 30px", display: "flex" }}>

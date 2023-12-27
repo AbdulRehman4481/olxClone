@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function NavBar() {
   return (
     <>
-      <div className="container">
+      <div className="container py-2">
         <div className="row">
           <div className="col">
             <div style={{ display: "flex" }}>

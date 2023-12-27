@@ -1,0 +1,27 @@
+#select-category {
+    width: 100%;
+}
+
+#iconsDiv {
+    border: 1px solid black;
+    padding: 20px;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+#postBtn {
+    border: 1px solid green;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+}
+#postBtn:hover{
+    border: 1px solid green;
+    background-color: white;
+    color: green;
+
+}

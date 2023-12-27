@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Header from './Header';
+import TopBar from './TopBar';
 
-import Header from './Header'
-import TopBar from './TopBar'
+export default function Index() {
 
-export default function index() {
-    return (
-        <>
-            <TopBar />
-            <Header />
-        </>
-    )
+  return (
+    <header >
+      <TopBar />
+      <Header />
+    </header>
+  );
 }

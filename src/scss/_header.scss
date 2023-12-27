@@ -63,10 +63,29 @@
         color: black;
         padding-left: 20px;
         font-size: small;
-    
+
     }
-    a:hover{
+
+    a:hover {
         color: #00A49F;
     }
 
+}
+
+#loginBtn {
+    cursor: pointer;
+    border-bottom: 2px solid green;
+    background: transparent;
+    color: green;
+    font-weight: bold;
+    
+
+}
+#forLoginBtn{
+    padding: 10px;
+    width: 80%;
+    background: transparent;
+    border-radius: 10px;
+    font-weight: bold;
+    
 }
