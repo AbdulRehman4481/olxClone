@@ -14,7 +14,7 @@ import  png2  from "assets/image/logo/appstore.png";
 import  png3  from "assets/image/logo/appGallary.png";
 export default function DetailFooter() {
     return (
-        <detailfooter style={{ backgroundColor: "#EBEEEF" }} >
+        <div style={{ backgroundColor: "#EBEEEF" }} >
             <div className="container">
                 <div className="row">
                     <div className="col" id='detailFooter'>
@@ -142,6 +142,6 @@ export default function DetailFooter() {
                     </div>
                 </div>
             </div>
-        </detailfooter>
+        </div>
     )
 }

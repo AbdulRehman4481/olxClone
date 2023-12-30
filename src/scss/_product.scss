@@ -5,8 +5,11 @@
 #iconsDiv {
     border: 1px solid black;
     padding: 20px;
-    margin-left: 20px;
+    margin: 10px;
     border-radius: 5px;
+}
+#iconsDiv:hover{
+    cursor: pointer;
 }
 
 #postBtn {
