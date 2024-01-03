@@ -179,10 +179,10 @@ export default function Header() {
 
     return (
         <>
-            <div className="container-fluid my-2 mt-0">
-                <div className="row px-5">
+            <div className="container-fluid my-2 mt-0" id='mainHeaderContainer'>
+                <div className="row">
                     <div className="col">
-                        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                        <nav className="navbar navbar-expand-lg ">
                             <div className="container-fluid">
                                 <span className="navbar-brand" >
                                     <div >
@@ -198,7 +198,7 @@ export default function Header() {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li className="nav-item px-3 mt-1" style={{ width: "300px" }} >
+                                        <li className="nav-item px-3 my-1" style={{ width: "300px" }} >
                                             <Select
                                                 value={selectedOption}
                                                 onChange={handleOption}
@@ -208,36 +208,40 @@ export default function Header() {
                                             />
                                         </li>
                                         <li className="nav-item mt-1">
-                                            <input type='text' placeholder='Find Car,Mobile and Phone and more...' id='searchbar' className="control-from" />
-                                            <button id='searchbtn'><IoSearch size={20} /></button>
+                                            <div id='mainsearchBar'>
+                                                <input type='text' placeholder='Find Car,Mobile and Phone and more...' id='searchbar' className="control-from" />
+                                                <button id='searchbtn'><IoSearch size={20} /></button>
+                                            </div>
                                         </li>
                                         {!isAuth
                                             ? <li className="nav-item px-4 mt-2">
                                                 <span id='loginBtn' onClick={() => { setOpenModal3(true) }}>Login</span>
                                             </li>
                                             : <>
-                                                <li className="nav-item px-3 mt-2">
+                                            <div id='headerIcon'>
+                                                <li className="nav-item  mt-2">
                                                     <Link to="chat" style={{ textDecoration: "none", color: "black" }}>
                                                         <i style={{ paddingLeft: "30px" }}><BsChat size={25} /></i>
                                                     </Link>
                                                 </li>
-                                                <li className="nav-item px-2 mt-2">
+                                                <li className="nav-item  mt-2">
                                                     <i>
                                                         <MdNotificationsNone size={25} />
                                                     </i>
                                                 </li>
-                                                <li className="nav-item px-2 mt-2">
+                                                <li className="nav-item  mt-2">
                                                     <i>
                                                         <FaAngleDown size={25} />
                                                     </i>
                                                 </li>
+                                                </div>
                                             </>
                                         }
 
-                                        <li className="nav-item px-3">
-                                            <div  onClick={handleSellClick} style={{ textDecoration: "none", color: "black" }}>
+                                        <li className="nav-item">
+                                            <div onClick={handleSellClick} style={{ textDecoration: "none", color: "black" }}>
                                                 <div id='selBtn'  >
-                                                    <span style={{ fontWeight: "bold", fontSize: "18px" }} >
+                                                    <span style={{ fontWeight: "bold", fontSize: "18px", cursor: "pointer" }} >
                                                         <i><HiPlus size={20} /></i>
                                                         sell
                                                     </span>

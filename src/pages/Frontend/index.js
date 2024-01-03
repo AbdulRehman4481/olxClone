@@ -8,6 +8,7 @@ import Home from './Home'
 import Motors from './Motor'
 import Property from './Property'
 import Chat from './Chat'
+import AdDetails from './AdDetails'
 
 export default function Index() {
   return (
@@ -19,6 +20,7 @@ export default function Index() {
           <Route path='/' element={<Home />} />
           <Route path='motors' element={<Motors />} />
           <Route path='property' element={<Property />} />
+          <Route path='adDetails/:id' element={<AdDetails />} />
           <Route path='chat' element={<Chat />} />
         </Routes>
       </main>

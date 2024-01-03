@@ -1,29 +1,11 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Col, Row } from 'antd'
 import { Link } from 'react-router-dom'
 import { IoIosArrowForward } from "react-icons/io";
 
 // Pic
 import ad1 from 'assets/image/Ad/ad.png'
-import mobile1 from 'assets/image/Ad/viv1.jpeg'
-import mobile2 from 'assets/image/Ad/vive.jpeg'
-import mobile3 from 'assets/image/Ad/infix.jpeg'
-import mobile4 from 'assets/image/Ad/onePlu.jpeg'
-import car1 from 'assets/image/Ad/car1.jpeg'
-import car2 from 'assets/image/Ad/car2.jpeg'
-import car3 from 'assets/image/Ad/car3.jpeg'
-import car4 from 'assets/image/Ad/car4.jpeg'
-import bike1 from 'assets/image/Ad/bike3.jpeg'
-import bike2 from 'assets/image/Ad/bike2.jpeg'
-import bike3 from 'assets/image/Ad/bike1.jpeg'
-import bike4 from 'assets/image/Ad/bike4.jpeg'
-import home1 from 'assets/image/Ad/home1.jpeg'
-import home2 from 'assets/image/Ad/hom2.jpeg'
-import home3 from 'assets/image/Ad/home3.jpeg'
-import audio1 from 'assets/image/Ad/audio.jpeg'
-import audio2 from 'assets/image/Ad/audio1.jpeg'
-import audio3 from 'assets/image/Ad/audio3.jpeg'
-import audio4 from 'assets/image/Ad/audio.jpeg'
+
 
 // LOGO
 import mobileLogo from 'assets/image/logo/phone-removebg-preview.png'
@@ -40,9 +22,45 @@ import chairLogo from 'assets/image/logo/Chair-removebg-preview.png'
 import clothLogo from 'assets/image/logo/Cloth-removebg-preview.png'
 import bookLogo from 'assets/image/logo/Book-removebg-preview.png'
 import gameLogo from 'assets/image/logo/Game-removebg-preview.png'
+import { ProductContext } from 'context/ProductContext';
 
 
 export default function Hero() {
+    const { products, getProduct } = useContext(ProductContext)
+    const [mobilesProduct, setMobilesProduct] = useState([]);
+    const [carsProduct, setCarsProduct] = useState([]);
+    const [bikesProduct, setBikesProduct] = useState([]);
+    const [housesProduct, setHousesProduct] = useState([]);
+    const [audiosProduct, setAudiosProduct] = useState([]);
+    const [tabletsProduct, setTabletsProduct] = useState([]);
+
+    useEffect(() => {
+        getProduct()
+    }, [])
+
+    useEffect(() => {
+        const filtered = products.filter((product) => product.productCategory === "mobile");
+        setMobilesProduct(filtered);
+    }, [products]);
+    useEffect(() => {
+        const filtered = products.filter((product) => product.productCategory === "cars");
+        setCarsProduct(filtered);
+    }, [products]);
+    useEffect(() => {
+        const filtered = products.filter((product) => product.productCategory === "bike");
+        setBikesProduct(filtered);
+    }, [products]);
+    useEffect(() => {
+        const filtered = products.filter((product) => product.productCategory === "property");
+        setHousesProduct(filtered);
+    }, [products]);
+    useEffect(() => {
+        const filtered = products.filter((product) => product.productCategory === "electornic");
+        setAudiosProduct(filtered);
+    }, [products]);
+
+
+
     return (
         <>
             <div className="container">
@@ -205,46 +223,24 @@ export default function Hero() {
                                 </Col>
                             </Row>
                             <Row gutter={30}>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={mobile1} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 15000</h6>
-                                            <p className="card-text">Vivo s1</p>
-                                            <p className="card-text">Gojra ,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={mobile2} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 26000</h6>
-                                            <p className="card-text">Vivo Y17</p>
-                                            <p className="card-text">Lahore,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={mobile3} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 49000</h6>
-                                            <p className="card-text">Infinix Zero 30</p>
-                                            <p className="card-text">Jungh , Punjab , Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={mobile4} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 51000</h6>
-                                            <p className="card-text">One pluse 7T</p>
-                                            <p className="card-text">FaislbadPunjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
+                                {mobilesProduct.slice(0, 4).map((mobile, i) => {
+                                    return (
+                                        <Col key={i} className='m-2'>
+                                            <Link to={`adDetails/${mobile.id}`} >
+                                                <div className="card" style={{ width: "16rem" }}>
+                                                    <img src={mobile.files} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
+                                                    <div className="card-body">
+                                                        <h6 className="card-title">{mobile.price}</h6>
+                                                        <p className="card-text">{mobile.productTitle}</p>
+                                                        <p className="card-text">{mobile.productLocation}</p>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        </Col>
+                                    )
+                                })}
+
+
                             </Row>
                         </div>
                     </div>
@@ -266,46 +262,22 @@ export default function Hero() {
                                 </Col>
                             </Row>
                             <Row gutter={30}>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={car1} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 15000</h6>
-                                            <p className="card-text">Vivo s1</p>
-                                            <p className="card-text">Gojra ,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={car2} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 26000</h6>
-                                            <p className="card-text">Vivo Y17</p>
-                                            <p className="card-text">Lahore,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={car3} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 49000</h6>
-                                            <p className="card-text">Infinix Zero 30</p>
-                                            <p className="card-text">Jungh , Punjab , Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={car4} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 51000</h6>
-                                            <p className="card-text">One pluse 7T</p>
-                                            <p className="card-text">FaislbadPunjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
+                                {carsProduct.slice(0, 4).map((car, i) => {
+                                    return (
+                                        <Col key={i} className='m-2'>
+                                            <div className="card" style={{ width: "16rem" }}>
+                                                <img src={car.files} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
+                                                <div className="card-body">
+                                                    <h6 className="card-title">{car.price}</h6>
+                                                    <p className="card-text">{car.productTitle}</p>
+                                                    <p className="card-text">{car.productLocation}</p>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    )
+                                })}
+
+
                             </Row>
                         </div>
                     </div>
@@ -327,46 +299,22 @@ export default function Hero() {
                                 </Col>
                             </Row>
                             <Row gutter={30}>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={bike1} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 15000</h6>
-                                            <p className="card-text">Vivo s1</p>
-                                            <p className="card-text">Gojra ,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={bike2} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 26000</h6>
-                                            <p className="card-text">Vivo Y17</p>
-                                            <p className="card-text">Lahore,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={bike3} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 49000</h6>
-                                            <p className="card-text">Infinix Zero 30</p>
-                                            <p className="card-text">Jungh , Punjab , Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={bike4} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 51000</h6>
-                                            <p className="card-text">One pluse 7T</p>
-                                            <p className="card-text">FaislbadPunjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
+                                {bikesProduct.slice(0, 4).map((bike, i) => {
+                                    return (
+                                        <Col key={i} className='m-2'>
+                                            <div className="card" style={{ width: "16rem" }}>
+                                                <img src={bike.files} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
+                                                <div className="card-body">
+                                                    <h6 className="card-title">{bike.price}</h6>
+                                                    <p className="card-text">{bike.productTitle}</p>
+                                                    <p className="card-text">{bike.productLocation}</p>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    )
+                                })}
+
+
                             </Row>
                         </div>
                     </div>
@@ -388,46 +336,39 @@ export default function Hero() {
                                 </Col>
                             </Row>
                             <Row gutter={30}>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={home1} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 15000</h6>
-                                            <p className="card-text">Vivo s1</p>
-                                            <p className="card-text">Gojra ,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={home2} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 26000</h6>
-                                            <p className="card-text">Vivo Y17</p>
-                                            <p className="card-text">Lahore,Punjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={home3} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 49000</h6>
-                                            <p className="card-text">Infinix Zero 30</p>
-                                            <p className="card-text">Jungh , Punjab , Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
-                                <Col span={6}>
-                                    <div className="card" style={{ width: "16rem" }}>
-                                        <img src={home1} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
-                                        <div className="card-body">
-                                            <h6 className="card-title">Rs 51000</h6>
-                                            <p className="card-text">One pluse 7T</p>
-                                            <p className="card-text">FaislbadPunjab,Pakistan</p>
-                                        </div>
-                                    </div>
-                                </Col>
+                                {housesProduct.slice(0, 4).map((house, i) => {
+                                    return (
+                                        <Col key={i} className='m-2'>
+                                            <div className="card" style={{ width: "16rem" }}>
+                                                <img src={house.files} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
+                                                <div className="card-body">
+                                                    <h6 className="card-title">{house.price}</h6>
+                                                    <p className="card-text">{house.productTitle}</p>
+                                                    <p className="card-text">{house.productLocation}</p>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    )
+                                })}
+
+
+
+                            </Row>
+                            <Row gutter={30}>
+                                {audiosProduct.slice(0, 4).map((audio, i) => {
+                                    return (
+                                        <Col key={i} className='m-2'>
+                                            <div className="card" style={{ width: "16rem" }}>
+                                                <img src={audio.files} className="card-img-top" style={{ width: "16rem", height: "150px" }} />
+                                                <div className="card-body">
+                                                    <h6 className="card-title">{audio.price}</h6>
+                                                    <p className="card-text">{audio.productTitle}</p>
+                                                    <p className="card-text">{audio.productLocation}</p>
+                                                </div>
+                                            </div>
+                                        </Col>
+                                    )
+                                })}
                             </Row>
                         </div>
                     </div>

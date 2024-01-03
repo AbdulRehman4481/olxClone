@@ -1,3 +1,22 @@
+#mainHeaderContainer {
+    width: 100%;
+    padding: 0px 100px;
+}
+
+@media screen and (max-width: 1245px) {
+    #mainHeaderContainer {
+        width: fit-content;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #mainHeaderContainer {
+        width: 100%;
+        padding: 0px 100px;
+    }
+}
+
 #topBarLink {
     text-decoration: none;
     color: black;
@@ -9,15 +28,35 @@
 
 #searchbar {
     padding: 5px;
-    width: 450px;
+    width: 500px;
     border: 2px solid green;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
+    transition: width 0.3s ease;
+    /* Add transition property for smooth width changes */
+}
+
+@media screen and (max-width: 1450px) {
+    #searchbar {
+        width: 320px;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    #searchbar {
+        width: 200px;
+    }
+    
+#headerIcon {
+    .nav-item {
+        margin: 0 0;
+    }
+}
 }
 
 #searchbtn {
-    padding: 5px;
+    padding: 4.7px;
     border: 2px solid green;
-    border-radius: 3px;
+    border-radius: 0px 3px 3px 0px;
     background-color: green;
     color: white;
 }
@@ -30,10 +69,12 @@
     height: 50px;
     text-align: center;
     padding-top: 7px;
+
 }
 
 #dropdownDiv {
     padding-left: 30px;
+    width: 300px;
 
     h6 {
         padding-top: 10px;
@@ -78,23 +119,37 @@
     background: transparent;
     color: green;
     font-weight: bold;
-    
+
 
 }
-#forLoginBtn{
+
+#forLoginBtn {
     padding: 10px;
     width: 80%;
     background: transparent;
     border-radius: 10px;
     font-weight: bold;
-    
+
 }
-#PhoneInput{
+
+#PhoneInput {
     outline-color: aqua;
 }
 
-#nxtBtn{
+#nxtBtn {
     background-color: green;
     color: white;
     font-weight: bold;
+}
+
+
+#headerIcon {
+    display: flex;
+
+    .nav-item {
+        margin: 0 10px;
+    }
+}
+.forDisableHeader{
+    display: none;
 }
